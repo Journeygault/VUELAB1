@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	
+		<title>J1 Practice</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style>
+			.formfield{margin-bottom:10px;}
+		</style>
+	</head>
+	<body>
+        <a href="https://dmoj.ca/problem/ccc19j1">Link to j1 problem</a>
+	<div id="app">
+        <form id="form" @submit="Answer">
+            <h2>Apples </h2>
+
+            <label for="quantity">3 pointers</label>
+            <input type="number" id="aOne">
+            <label for="quantity">2 pointers</label>
+            <input type="number" id="aTwo">
+            <label for="quantity" >1 pointers</label>
+            <input type="number" id="aThree">
+
+            <h2>Bananas</h2>
+
+            <label for="quantity">3 pointers</label>
+            <input type="number" id="bOne">
+            <label for="quantity">2 pointers</label>
+            <input type="number" id="bTwo">
+            <label for="quantity">1 pointers</label>
+            <input type="number" id="bThree">
+                <input type="submit">
+        </form>
+        <p>
+            <span v-if="checkWinner.banannaResult > checkWinner.appleResult ">{{data.A}}</span>
+            <span v-if="checkWinner.banannaResult = checkWinner.appleResult ">{{data.T}}</span>
+            <!-- <span v-else>{{data.B}}</span> -->
+        </p>
+
+    </div>
+
+          
+           
+
+	<script>
+    var aOne = document.getElementById('aOne').value
+    var aTwo = parseInt(document.getElementById('aTwo').value)
+    var aThree = parseInt(document.getElementById('aThree').value)
+    var bOne = parseInt(document.getElementById('bOne').value)
+    var bTwo = parseInt(document.getElementById('bTwo').value)
+    var bThree =parseInt( document.getElementById('bThree').value)
+
+var app = new Vue({
+		el: '#app',
+        
+		data:{
+            B:'B',
+            A:'A',
+            T:'T',
+            result:{
+                banannaResult: (aOne*3)+(aTwo*2)+aThree,
+			    appleResult: (bOne*3)+(bTwo*2)+bThree,
+            },
+			
+            
+
+		},
+        methods:{
+            checkWinner(){
+                var banannaResult=((aOne*3)+(aTwo*2)+aThree)
+                alert({banannaResult})
+                var appleResult =  (bOne*3)+(bTwo*2)+bThree,å
+
+               
+            },
+            Answer:function(){
+				
+				return this.checkWinner &&  false;
+                	
+			}
+
+        }
+	});
+    var form = document.getElementById('form')
+
+    
+
+	// form.onsubmit= processform;
+
+	// function processform(){
+    //     var aOne = document.getElementById('aOne').value
+    //     var aTwo = parseInt(document.getElementById('aTwo').value)
+    //     var aThree = parseInt(document.getElementById('aThree').value)
+    //     var bOne = parseInt(document.getElementById('bOne').value)
+    //     var bTwo = parseInt(document.getElementById('bTwo').value)
+    //     var bThree =parseInt( document.getElementById('bThree').value)
+        
+    //     let appleResult = (aOne*3)+(aTwo*2)+aThree
+    //     let banannaResult =(bOne*3)+(bTwo*2)+bThree
+    //     // alert(appleResult)
+    //     // alert(banannaResult)
+
+
+
+       
+    //}
+
+	
+	</script>
+
+	</body>
+</html>

@@ -7,6 +7,16 @@
 		<style>
 			ul {list-style-type:none;}
 			ul li{marign-bottom:20px;}
+			.mb{
+				color:red;
+			}
+			.lmb{
+				color:blue;
+			}
+			/* Allows the new line on \n, I beleve this is a built in functionality for vue */
+			.newline{
+				white-space: pre; 
+			}
 		</style>
 	</head>
 	<body>
@@ -14,8 +24,15 @@
 	<div id="app">
 		<ul>
 			<li v-for="part in scene">
-				<span>{{part.character}}</span>
-				<p>{{part.dialogue}}</p>
+				<!-- IF STATEMENTS IN LOOP STYLE BY CHARECHTER -->
+					<div  v-if="part.character == 'MACBETH'" class="mb">
+						<span>{{part.character}}</span>
+						<p class="newline">{{part.dialogue}}</p>
+					</div>
+					<div  v-if="part.character == 'LADY MACBETH'" class="lmb">
+						<span>{{part.character}}</span>
+						<p class="newline">{{part.dialogue}}</p>
+					</div>
 			</li>
 		</ul>
 	</div>

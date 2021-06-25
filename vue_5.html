@@ -7,32 +7,53 @@
 		<style>
 			.box{width:200px; height:200px; background:green; border:2px solid black; text-align:center; line-height:200px; color:white;}
 			.hidden{display:none;}
+			.redBox{width:100px; height:100px; background:red; }
+			
 		</style>
 	</head>
 	<body>
 	
 	<div id="app">
 		<div v-bind:class="{box:true, hidden:boxHidden}">{{message}}</div>
-		<button v-on:click="showhide();">Click</button>
+		<button id="text" v-on:click="showhide();">Hide</button>
+		<!-- Use comma to add multiple styles -->
+		<div  v-bind:class="{redBox:true }" v-on:mouseover="changeStyle" v-bind:style="{height: boxHeight + 'px', width: boxWidth + 'px'}"></div>
+
 	</div>
 	
 	<script>
+		var text = document.getElementById('Text');
+
 	var app = new Vue({
 		el: '#app',
 		
 		data:{
 			boxHeight:200,
 			boxHidden : false,
-			message  : 'Make me disappear!'
+			message  : 'Make me disappear!',
+			// Box Dimensions
+			boxHeight : 100,
+			boxWidth : 100
 		},
 		methods:{
 			showhide : function(){
 				console.log(this.boxHidden);
 				if(this.boxHidden){
 					this.boxHidden=false;
+					document.getElementById('text').innerHTML="Hide"
 				}else{
-					this.boxHidden=true;	
+					this.boxHidden=true;
+					document.getElementById('text').innerHTML="Show"
+
+	
 				}
+			},
+			changeStyle : function(){
+				//Added Width to practice styles
+                this.boxHeight = this.boxHeight + 10;
+				this.boxWidth = this.boxWidth + 10;
+
+				
 			}
 		}
 		
